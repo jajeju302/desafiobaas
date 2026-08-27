@@ -97,7 +97,7 @@ export async function equiparItem(
   slot: "arma" | "armadura" | "anel",
   itemId: string
 ): Promise<void> {
-  
+   
   await updateDoc(doc(db, "personagens", personagemId), { [slot]: itemId });
 }
 // ---------------------------------------------------------------------------
@@ -116,8 +116,7 @@ export async function deletarPersonagem(
   personagem: Personagem,
   indice: number
 ): Promise<void> {
-  // 🐛 BUG 07 — usa o índice da lista (0, 1, 2) como ID do documento
-  await deleteDoc(doc(db, "personagens", String(indice)));
+  await deleteDoc(doc(db, "personagens", personagem.id));
 }
 
 // ---------------------------------------------------------------------------
