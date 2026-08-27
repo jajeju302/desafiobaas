@@ -97,10 +97,9 @@ export async function equiparItem(
   slot: "arma" | "armadura" | "anel",
   itemId: string
 ): Promise<void> {
-  // 🐛 BUG 06 — setDoc apaga o documento inteiro ao invés de atualizar só o campo
-  await setDoc(doc(db, "personagens", personagemId), { [slot]: itemId });
+  
+  await updateDoc(doc(db, "personagens", personagemId), { [slot]: itemId });
 }
-
 // ---------------------------------------------------------------------------
 // DELETAR — BUG 07 🐛
 // ---------------------------------------------------------------------------
